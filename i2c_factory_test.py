@@ -17,10 +17,7 @@ def main():
     component_miss_in_bus3 = 0
     print 'Checking I2C devices on BUS' + str(bus) + '------------->'
     real_result = i2cprobe(bus)
-#    required_items = ['20', '21', '23']
-#    missing_items = set(required_items) - set(real_result)
-#    if missing_items:
-#        print 'missing: %s' % missing_items
+
     if '20' not in real_result:
         print 'I/O expander(U43) 0x20 is not on i2c BUS0 !!! '
         component_miss_in_bus0 += 1 
@@ -51,8 +48,6 @@ def main():
     if component_miss_in_bus0 == 0: 
         print 'OK.\n'
         
-#    print 'Total lost I2C components on BUS0 = ' + str(component_miss_in_bus0)
-  
     """Start to scan bus 3 """
     bus = 3
     print 'Checking I2C devices on BUS' + str(bus) + '------------->'
@@ -78,7 +73,6 @@ def main():
     if component_miss_in_bus3 == 0:
         print "OK.\n"
     
-#    print 'Total lost I2C components on BUS3 = ' + str(component_miss_in_bus3)
     print "..................................................\n"
 
 def check_FRAM():
